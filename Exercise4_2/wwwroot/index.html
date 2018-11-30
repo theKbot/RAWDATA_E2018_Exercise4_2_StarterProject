@@ -19,8 +19,8 @@
             <div data-bind="foreach: items">
                 <div>
                     <div>_______ </div>
-                    <div>Link: <span data-bind="text: link"></span></div>
-
+                    <div>Link (plain text): <span data-bind="text: link"></span></div>
+                    <div><a data-bind="attr: {href: link}">Link for realz link</a></div>
                     <div>Title: <span data-bind="text: title"></span></div>
                 </div>
             </div>

@@ -14,7 +14,6 @@
     }
     );
 
-    
 
     var nextPage = function () {
         page = ko.computed(function () {
