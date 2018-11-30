@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+</head>
+<body>
+    <h1>Posts:</h1>
+
+    <div id="pageInformant">
+        Current page:
+        <span data-bind="text: page"></span>
+    </div>
+    <div id="maxPageInformant">
+        Max pages:
+        <span data-bind="text: maxPage"></span>
+    </div>
+    <div>
+        <div data-bind="foreach: postArray">
+            <div data-bind="foreach: items">
+                <div>
+                    <div>_______ </div>
+                    <div>Link: <span data-bind="text: link"></span></div>
+
+                    <div>Title: <span data-bind="text: title"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button data-bind="click: prevPage">Previous page</button>
+    <button data-bind="click: nextPage">Next page</button>
+    <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
+</body>
+</html>
