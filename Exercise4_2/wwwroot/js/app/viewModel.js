@@ -8,14 +8,16 @@
     });
     var currentUI = ko.observable("postUI");
     var page = ko.observable(0);
+    var maxPage = ko.observable(2);
+    var pageSize = ko.observable(5);
     var postArray = ko.observableArray([]);
     var post = ko.observable();
-    var maxPage = ko.observable(2);
+    
 
 
 
     //Get posts from page
-    $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
+    $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
         maxPage(parseInt(data.pages));
         postArray.push(data);
     });
@@ -34,8 +36,9 @@
         if (page === maxPage - 1) { alert("memes"); page(0); }
         else { page(page() + 1) }
 
-        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
-            postArray(data);
+        $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
+            postArray([]);
+            postArray.push(data);
         }
         );
     }
@@ -45,8 +48,9 @@
         if (page === 0) { page(maxPage); }
         else { page(page() - 1) }
 
-        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
-            postArray(data);
+        $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
+            postArray([]);
+            postArray.push(data);
         }
         );
     }
@@ -73,6 +77,7 @@
         currentUI,
         changeUI,
         showPost,
-        post
+        post,
+        pageSize
     };
 });
