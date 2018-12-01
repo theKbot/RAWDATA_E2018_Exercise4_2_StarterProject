@@ -9,7 +9,7 @@
     var currentUI = ko.observable("postUI");
     var page = ko.observable(0);
     var postArray = ko.observableArray([]);
-    var post = ko.observableArray([]);
+    var post = ko.observable();
     var maxPage = ko.observable(2);
 
 
@@ -20,13 +20,12 @@
         postArray.push(data);
     });
 
-    var showPost = function(data) {
+    var showPost = function (data) {
         var split = data.split("/");
         var id = split[split.length - 1];
         $.getJSON("api/posts/" + id, function (data) {
-            post.push(data);
+            post({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body});
             changeUI();
-            alert("changed..")
         })
     }
 

@@ -37,11 +37,14 @@
 
     <script type="text/html" id="singlePostUI">
         <div>
-            <div data-bind="foreach: post">
+            <div data-bind="with: post">
                 <div>
                     <div id="postLink">Link (plain text): <span data-bind="text: link"></span></div>
                     <div id="postLinkReal"><a data-bind="attr: {href: link}">Link for realz link</a></div>
                     <div id="postTitle">Title: <span data-bind="text: title"></span></div>
+                    <div id="creationDate">Creation Date: <span data-bind="text: creationDate"></span></div>
+                    <div id="score">Post Score: <span data-bind="text: score"></span></div>
+                    <div id="body">Body: <span data-bind="text: body"></span></div>
                 </div>
             </div>
             <div><button data-bind="click: changeUI">Go back to list</button></div>
