@@ -19,8 +19,8 @@
     //Goto next page
     var nextPage = function () {
         page = ko.computed(function () {
-            alert(page());
-            return parseInt(page() + 1);
+            alert(page())
+            return page() + 1;
         });
     }
     //Goto prev page
