@@ -6,27 +6,38 @@
 <body>
     <h1>Posts:</h1>
 
-    <div id="pageInformant">
-        Current page:
-        <span data-bind="text: page"></span>
-    </div>
-    <div id="maxPageInformant">
-        Max pages:
-        <span data-bind="text: maxPage"></span>
-    </div>
-    <div>
-        <div data-bind="foreach: postArray">
-            <div data-bind="foreach: items">
-                <div>
-                    <div>_______ </div>
-                    <div>Link (plain text): <span data-bind="text: link"></span></div>
-                    <div><a data-bind="attr: {href: link}">Link for realz link</a></div>
-                    <div>Title: <span data-bind="text: title"></span></div>
+    <div data-bind="template: {name: currentUI}"></div>
+
+    <script type="text/html" id="postUI">
+        <div id="pageInformant">
+            Current page:
+            <span data-bind="text: toString(page())"></span>
+        </div>
+        <div id="maxPageInformant">
+            Max pages:
+            <span data-bind="text: maxPage"></span>
+        </div>
+        <div>
+            <div data-bind="foreach: postArray">
+
+                <div data-bind="foreach: items">
+                    <div>
+                        <div>_______ </div>
+                        <div id="linkText">Link (plain text): <span data-bind="text: link"></span></div>
+                        <div id="linksReal"><a data-bind="attr: {href: link}">Link for realz link</a></div>
+                        <div id="titles">Title: <span data-bind="text: title"></span></div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </script>
 
+    <script type="text/html" id="textUI">
+        <div>
+            So yeah.. you changed the UI. Nicely done!
+        </div>
+    </script>
+    <div><button data-bind="click: changeUI">Change UI</button></div>
     <button data-bind="click: prevPage">Previous page</button>
     <button data-bind="click: nextPage">Next page</button>
     <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
