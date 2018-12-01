@@ -22,6 +22,10 @@
         page = ko.computed(function () {
             return page() + 1;
         });
+        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
+            postArray(data);
+        }
+        );
     }
 
     //Goto prev page
@@ -29,6 +33,10 @@
         page = ko.computed(function () {
             return page() - 1;
         });
+        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
+            postArray(data);
+        }
+        );
     }
 
     //Change the UI
