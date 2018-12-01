@@ -29,17 +29,26 @@
                     </div>
                 </div>
             </div>
+            <div><button data-bind="click: changeUI">Go to selected post(if any)</button></div>
+            <button data-bind="click: prevPage">Previous page</button>
+            <button data-bind="click: nextPage">Next page</button>
         </div>
     </script>
 
     <script type="text/html" id="singlePostUI">
         <div>
-            
+            <div data-bind="foreach: post">
+                <div>
+                    <div id="postLink">Link (plain text): <span data-bind="text: link"></span></div>
+                    <div id="postLinkReal"><a data-bind="attr: {href: link}">Link for realz link</a></div>
+                    <div id="postTitle">Title: <span data-bind="text: title"></span></div>
+                </div>
+            </div>
+            <div><button data-bind="click: changeUI">Go back to list</button></div>
         </div>
     </script>
-    <div><button data-bind="click: changeUI">Change UI</button></div>
-    <button data-bind="click: prevPage">Previous page</button>
-    <button data-bind="click: nextPage">Next page</button>
+
+    
     <script data-main="js/main.js" src="js/lib/requirejs/require.js"></script>
 </body>
 </html>
