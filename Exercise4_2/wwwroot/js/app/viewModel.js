@@ -8,7 +8,6 @@
 
     var currentUI = ko.observable("postUI");
     var page = ko.observable(0);
-    var tmpPage = ko.observable(1);
     var postArray = ko.observableArray([]);
     var maxPage;
 
@@ -19,26 +18,17 @@
 
     //Goto next page
     var nextPage = function () {
-        page = ko.computed(function() {
-            return page() + tmpPage();
+        page = ko.computed(function () {
+            alert(page());
+            return parseInt(page() + 1);
         });
-        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
-            postArray(data);
-        }
-        );
     }
     //Goto prev page
     var prevPage = function () {
-        var tmpPage = ko.observable(1);
         page = ko.computed(function () {
-            return page() - tmpPage();
+            return page() - 1;
         });
-        $.getJSON("api/posts", "page=" + page() + "&pageSize=10", function (data) {
-            postArray(data);
-        }
-        );
     }
-
     //Change the UI
     var changeUI = function () {
         if (currentUI() === "postUI") {
