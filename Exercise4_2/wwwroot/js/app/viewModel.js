@@ -18,7 +18,7 @@
 
     //Get posts from page
     $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
-        maxPage(parseInt(data.pages));
+        maxPage(parseInt(data.pages)-1);
         postArray.push(data);
     });
 
@@ -33,8 +33,8 @@
 
     //Goto next page
     var nextPage = function () {
-        if (page === maxPage - 1) { alert("memes"); page(0); }
-        else { page(page() + 1) }
+        if (page() > maxPage() - 1) { page(0); }
+        else { page(page() + 1); }
 
         $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
             postArray([]);
@@ -45,7 +45,7 @@
 
     //Goto prev page
     var prevPage = function () {
-        if (page === 0) { page(maxPage); }
+        if (page() < 1) { page(maxPage()); }
         else { page(page() - 1) }
 
         $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
