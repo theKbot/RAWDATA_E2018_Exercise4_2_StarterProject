@@ -11,6 +11,7 @@
     var maxPage = ko.observable(2);
     var pageSize = ko.observable(5);
     var postArray = ko.observableArray([]);
+    var answerArray = ko.observableArray([]);
     var post = ko.observable();
     
 
@@ -22,13 +23,21 @@
         postArray.push(data);
     });
 
+
+
     var showPost = function (data) {
         var split = data.split("/");
         var id = split[split.length - 1];
         $.getJSON("api/posts/" + id, function (data) {
-            post({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body});
-            changeUI();
-        })
+            post([]);
+            post({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body });
+        });
+        alert("Getting post");
+        $.getJSON("api/posts/" + id + "/answers", function (data) {
+            answerArray([]);
+            answerArray.push(data);
+        });
+        changeUI();
     }
 
     //Goto next page
@@ -67,6 +76,7 @@
 
     return {
         postArray,
+        answerArray,
         link,
         fullPost,
         title,
@@ -78,6 +88,6 @@
         changeUI,
         showPost,
         post,
-        pageSize
+        pageSize,
     };
 });

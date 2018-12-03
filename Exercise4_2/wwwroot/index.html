@@ -37,7 +37,7 @@
 
     <script type="text/html" id="singlePostUI">
         <div>
-            <div data-bind="with: post">
+            <div data-bind="foreach: post">
                 <div>
                     <div id="postLink">Link (plain text): <span data-bind="text: link"></span></div>
                     <div id="postLinkReal"><a data-bind="attr: {href: link}">Link for realz link</a></div>
@@ -47,6 +47,13 @@
                     <div id="body">Body: <span data-bind="text: body"></span></div>
                 </div>
             </div>
+            <div>______________________________ </div>
+            <div data-bind="foreach: answerArray">
+                <div>
+                    <div id="linkText">Score: </div>
+                </div>
+            </div>
+
             <div><button data-bind="click: changeUI">Go back to list</button></div>
         </div>
     </script>
