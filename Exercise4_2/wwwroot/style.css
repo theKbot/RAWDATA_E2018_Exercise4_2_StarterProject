@@ -1,0 +1,28 @@
+﻿h1{
+    font-size: 50px;
+}
+
+#pageInformant{
+    font-size: 30px;
+}
+#allPostsDiv {
+    border-radius: 15px;
+    background: rgba(76, 120, 80, 0.3);
+    padding: 20px;
+    width: 500px;
+
+}
+
+#postDiv{
+    border-radius: 10px;
+    background: rgb(169, 183, 134);
+    padding: 20px;
+}
+
+.navButton{
+    padding: 10px;
+}
+
+#nextButton{
+    float: right;
+}

@@ -9,11 +9,13 @@
     var currentUI = ko.observable("postUI");
     var page = ko.observable(0);
     var maxPage = ko.observable(2);
+    var pageXoutofY = ko.computed(function () {
+        return page() + "/" + maxPage();
+    })
     var pageSize = ko.observable(5);
     var postArray = ko.observableArray([]);
     var answerArray = ko.observableArray([]);
     var post = ko.observable();
-    
 
 
 
@@ -41,6 +43,10 @@
     }
 
     //Goto next page
+    var canClickNext = ko.computed(function () {
+        return (page() < maxPage());
+    });
+
     var nextPage = function () {
         if (page() > maxPage() - 1) { page(0); }
         else { page(page() + 1); }
@@ -53,6 +59,10 @@
     }
 
     //Goto prev page
+    var canClickPrev = ko.computed(function () {
+        return (page() > 0);
+    });
+
     var prevPage = function () {
         if (page() < 1) { page(maxPage()); }
         else { page(page() - 1) }
@@ -84,10 +94,13 @@
         prevPage,
         page,
         maxPage,
+        pageXoutofY,
         currentUI,
         changeUI,
         showPost,
         post,
-        pageSize
+        pageSize,
+        canClickNext,
+        canClickPrev
     };
 });
