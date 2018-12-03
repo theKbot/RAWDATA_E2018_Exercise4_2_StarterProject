@@ -32,10 +32,10 @@
             post([]);
             post({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body });
         });
-        alert("Getting post");
+
         $.getJSON("api/posts/" + id + "/answers", function (data) {
             answerArray([]);
-            answerArray.push(data);
+            answerArray(data);
         });
         changeUI();
     }
@@ -88,6 +88,6 @@
         changeUI,
         showPost,
         post,
-        pageSize,
+        pageSize
     };
 });

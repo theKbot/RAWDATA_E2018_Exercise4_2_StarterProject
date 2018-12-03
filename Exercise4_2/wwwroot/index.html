@@ -48,9 +48,14 @@
                 </div>
             </div>
             <div>______________________________ </div>
+            <h1 id="answersHeading">Answers to post</h1>
             <div data-bind="foreach: answerArray">
                 <div>
-                    <div id="linkText">Score: </div>
+                    <div id="linkText"><a data-bind="attr: {href: link}">Link</a></div>
+                    <div id="linkText">Body: : <span data-bind="text: body"></span></div>
+                    <div id="linkText">Creation Date: <span data-bind="text: creationDate"></span></div>
+                    <div id="linkText">Score: <span data-bind="text: score"></span></div>
+                    <div>___________________________________</div>
                 </div>
             </div>
 
