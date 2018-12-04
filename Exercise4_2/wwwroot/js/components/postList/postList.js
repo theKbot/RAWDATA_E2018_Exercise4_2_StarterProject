@@ -13,6 +13,8 @@
         var pageSize = ko.observable(5);
         var postArray = ko.observableArray([]);
 
+        var qid = ko.observable("fd");
+
         //Get posts from dataservice
         ds.getPosts(page(), pageSize(), function (data) {
             postArray.push(data);
@@ -28,11 +30,11 @@
             if (page() > maxPage() - 1) { page(0); }
             else { page(page() + 1); }
 
-            $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
+            ds.getPosts(page(), pageSize(), function (data) {
                 postArray([]);
                 postArray.push(data);
-            }
-            );
+                maxPage(data.pages - 1);
+            });
         }
 
         //Goto prev page
@@ -44,16 +46,17 @@
             if (page() < 1) { page(maxPage()); }
             else { page(page() - 1) }
 
-            $.getJSON("api/posts", "page=" + page() + "&pageSize=" + pageSize(), function (data) {
+            ds.getPosts(page(), pageSize(), function (data) {
                 postArray([]);
                 postArray.push(data);
-            }
-            );
+                maxPage(data.pages - 1);
+            });
         }
 
         //Show post
         var showPost = function (data) {
-            return true;
+            var split = data.split("/");
+            qid(split[split.length - 1]);
         }
 
         return {
@@ -69,7 +72,8 @@
             pageSize,
             canClickNext,
             canClickPrev,
-            showPost
+            showPost,
+            qid
         };
     }
 });

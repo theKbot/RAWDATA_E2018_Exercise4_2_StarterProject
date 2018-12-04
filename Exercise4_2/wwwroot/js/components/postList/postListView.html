@@ -15,4 +15,8 @@
     </div>
     <button class="navButton" id="prevButton" data-bind="click: prevPage, enable: canClickPrev">Previous page</button>
     <button class="navButton" id="nextButton" data-bind="click: nextPage, enable: canClickNext">Next page</button>
+
+    <div>
+        <single-post params="{_qid: qid()}"></single-post>
+    </div>
 </div>
