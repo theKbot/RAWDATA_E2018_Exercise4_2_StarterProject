@@ -9,15 +9,12 @@
 
 
     //Get single posts with answers
-    var getSinglePost = function (id, callback1, callback2) {
+    var getSinglePost = function (id, callBack) {
         $.getJSON("api/posts/" + id, function (data) {
-            callBack1({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body });
-        });
-
-        $.getJSON("api/posts/" + id + "/answers", function (data) {
-            callback2(data);
+            callBack({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body });
         });
     }
+
 
 
     return {
