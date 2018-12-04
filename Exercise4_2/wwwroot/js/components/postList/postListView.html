@@ -9,7 +9,7 @@
                 <div>______________________________ </div>
                 <div id="linksReal"><a data-bind="attr: {href: link}">Link</a></div>
                 <div id="titles">Title: <span data-bind="text: title"></span></div>
-                <div><button>Show post</button></div>
+                <div><button data-bind="click: $parent.showPost.bind(this, link)">Show post</button></div>
             </div>
         </div>
     </div>
@@ -17,6 +17,7 @@
     <button class="navButton" id="nextButton" data-bind="click: nextPage, enable: canClickNext">Next page</button>
 
     <div>
+        <h1>POST:</h1>
         <single-post params="{_qid: qid()}"></single-post>
     </div>
 </div>

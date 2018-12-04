@@ -3,18 +3,20 @@
 
         var post = ko.observable();
         var answerArray = ko.observableArray([]);
-        var qid = parseInt(params._qid());
-        ds
-        $.getJSON("api/posts/" + qid, function (data) {
-            post([]);
-            post({ link: data.link, title: data.title, creationDate: data.creationDate, score: data.score, body: data.body });
-        });
 
-        ds.getSinglePost(qid, function(data) {
-            post([]);
-            post(data);
-        });
+        var qid = ko.observable(parseInt(params._qid()));
 
+        if (!isNaN(qid())){
+            ds.getSinglePost(qid(), function (data) {
+                post([]);
+                post(data);
+            });
+
+            ds.getAnswersToPost(qid(), function (data) {
+                answerArray([]);
+                answerArray(data);
+            });
+        }
         return {
             post,
             qid,

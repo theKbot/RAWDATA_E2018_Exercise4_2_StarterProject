@@ -15,10 +15,17 @@
         });
     }
 
+    var getAnswersToPost = function (id, callBack) {
+        $.getJSON("api/posts/" + id + "/answers", function (data) {
+            callBack(data);
+        });
+    }
+
 
 
     return {
         getPosts,
-        getSinglePost
+        getSinglePost,
+        getAnswersToPost
     }
 });

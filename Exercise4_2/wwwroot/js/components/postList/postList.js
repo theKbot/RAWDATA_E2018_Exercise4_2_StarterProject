@@ -13,7 +13,7 @@
         var pageSize = ko.observable(5);
         var postArray = ko.observableArray([]);
 
-        var qid = ko.observable(19);
+        var qid = ko.observable();
 
         //Get posts from dataservice
         ds.getPosts(page(), pageSize(), function (data) {
