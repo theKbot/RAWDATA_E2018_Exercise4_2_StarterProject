@@ -1,1 +1,18 @@
-﻿
+﻿<div id="pageInformant">
+    Showing page:
+    <span data-bind="text: pageXoutofY"></span>
+</div>
+<div id="allPostsDiv">
+    <div data-bind="foreach: postArray" id="postDiv">
+        <div data-bind="foreach: items">
+            <div>
+                <div>______________________________ </div>
+                <div id="linksReal"><a data-bind="attr: {href: link}">Link</a></div>
+                <div id="titles">Title: <span data-bind="text: title"></span></div>
+                <div><button>Show post</button></div>
+            </div>
+        </div>
+    </div>
+    <button class="navButton" id="prevButton" data-bind="click: prevPage, enable: canClickPrev">Previous page</button>
+    <button class="navButton" id="nextButton" data-bind="click: nextPage, enable: canClickNext">Next page</button>
+</div>

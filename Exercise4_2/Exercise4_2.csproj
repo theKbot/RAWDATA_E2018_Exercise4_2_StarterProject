@@ -5,7 +5,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="wwwroot\js\components\postList.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\js\components\postList.js" />
     <_ContentIncludedByDefault Remove="wwwroot\js\style.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\js\components\postList\postList.js" />
   </ItemGroup>
 
   <ItemGroup>
