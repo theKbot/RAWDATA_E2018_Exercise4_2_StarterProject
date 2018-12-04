@@ -4,7 +4,10 @@ require.config({
     baseUrl: "js",
     paths: {
         jquery: "lib/jQuery/jquery.min",
-        knockout: "lib/knockout/dist/knockout.debug"
+        knockout: "lib/knockout/dist/knockout.debug",
+        text: "lib/text/text",
+        dataService: "services/ds"
+        
     }
 });
 

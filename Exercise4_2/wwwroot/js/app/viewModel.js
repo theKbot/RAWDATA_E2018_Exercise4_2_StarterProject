@@ -1,8 +1,8 @@
 ﻿define(['jquery', 'knockout'], function ($, ko) {
 
     //Some variables
-    var link = ko.observable("something");
-    var title = ko.observable("What is love");
+    var link = ko.observable();
+    var title = ko.observable();
     var fullPost = ko.computed(function () {
         return link() + " " + title();
     });
